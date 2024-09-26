@@ -1,8 +1,13 @@
-import express from 'express';
+const express = require('express');
+const React = require('react');
+const { renderToString } = require('react-dom/server');
+const { App } = require('../App');
+
 const app = express();
 const port = 9000;
 
 app.get('/', (req, res) => {
+  const appString = renderToString(React.createElement(App));
   const html = `
     <!doctype html>
     <html lang="ja">
@@ -13,7 +18,7 @@ app.get('/', (req, res) => {
         <title>SSR</title>
       </head>
       <body>
-        <div id="root">レンダリング</div>
+        <div id="root">${appString}</div>
         <script type="module" src="/src/main.tsx"></script>
       </body>
     </html>

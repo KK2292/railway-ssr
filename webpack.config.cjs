@@ -1,15 +1,20 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/server/index.js',
+  entry: './src/server/index.cjs',
   target: 'node',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.cjs'
   },
   module: {
     rules: [
+    {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: 'ts-loader'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -20,6 +25,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   }
 };

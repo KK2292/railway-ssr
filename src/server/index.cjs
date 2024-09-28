@@ -4,7 +4,7 @@ const { renderToString } = require('react-dom/server');
 const { App } = require('../App');
 
 const app = express();
-const port = 9000;
+const port = 9001;
 
 app.get('/', (req, res) => {
   const appString = renderToString(React.createElement(App));

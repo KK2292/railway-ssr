@@ -1,12 +1,12 @@
-const express = require('express');
-const React = require('react');
-const { renderToString } = require('react-dom/server');
-const { App } = require('../App');
+import express from "express";
+import React from "react";
+import { renderToString } from "react-dom/server";
+import { App } from "../App.tsx";
 
 const app = express();
 const port = 9001;
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   const appString = renderToString(React.createElement(App));
   const html = `
     <!doctype html>
